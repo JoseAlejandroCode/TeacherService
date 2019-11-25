@@ -6,7 +6,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "teachers")
 public class Teacher {
@@ -24,7 +26,13 @@ public class Teacher {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date birthdate;
 
+  private List<String> familyList;
+
+  private List<String> coursesList;
+
   public Teacher() {
+    coursesList = new ArrayList<>();
+    familyList = new ArrayList<>();
   }
 
   public Teacher(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate) {
@@ -83,4 +91,27 @@ public class Teacher {
     this.birthdate = birthdate;
   }
 
+  public List<String> getCoursesList() {
+    return coursesList;
+  }
+
+  public void setCoursesList(List<String> coursesList) {
+    this.coursesList = coursesList;
+  }
+
+  public void addCourse(String course) {
+    this.coursesList.add(course);
+  }
+
+  public List<String> getFamilyList() {
+    return familyList;
+  }
+
+  public void setFamilyList(List<String> familyList) {
+    this.familyList = familyList;
+  }
+
+  public void addFamily(String family) {
+    this.familyList.add(family);
+  }
 }
