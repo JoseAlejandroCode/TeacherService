@@ -50,10 +50,10 @@ public class TeacherServiceImpl implements TeacherService {
             .flatMap(s -> Mono.just(teacherConverter.convertToDto(s)))
             .flatMap(s -> {
               teacher.getFamilyList().forEach(family -> {
-                family.setIdStudent(s.getId());
+                family.addPartner(s);
                  s.addFamily(familyService.save(family).block());
               });
-              return Mono.just(s);
+              return update(s, s.getId());
             });
   }
 
@@ -65,11 +65,12 @@ public class TeacherServiceImpl implements TeacherService {
       s.setGender(teacher.getGender());
       s.setTypeDocument(teacher.getTypeDocument());
       s.setNumberDocument(teacher.getNumberDocument());
+      s.setFamilyList(teacher.getFamilyList());
       return teacherRepository.save(teacherConverter.convertToDocument(s))
               .flatMap(st -> Mono.just(teacherConverter.convertToDto(st)))
               .flatMap(st -> {
                 teacher.getFamilyList().forEach(family -> {
-                  family.setIdStudent(st.getId());
+                  family.addPartner(st);
                   st.addFamily(familyService.update(family, family.getId()).block());
                 });
                 return Mono.just(st);
