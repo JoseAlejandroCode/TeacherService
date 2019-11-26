@@ -65,7 +65,8 @@ public class TeacherServiceImpl implements TeacherService {
       s.setGender(teacher.getGender());
       s.setTypeDocument(teacher.getTypeDocument());
       s.setNumberDocument(teacher.getNumberDocument());
-      s.setFamilyList(teacher.getFamilyList());
+      teacher.getFamilyList().forEach(family -> s.addFamily(family));
+      teacher.getCourseList().forEach(course -> s.addCourse(course));
       return teacherRepository.save(teacherConverter.convertToDocument(s))
               .flatMap(st -> Mono.just(teacherConverter.convertToDto(st)))
               .flatMap(st -> {
