@@ -15,4 +15,5 @@ public interface TeacherService {
   Flux<TeacherDto> findByFullNameLikeIgnoreCase(String fullName);
   Mono<TeacherDto> findByNumberDocument(String numberDocument);
   Flux<TeacherDto> findByBirthdate(Date dateStart, Date dateEnd);
+  Flux<TeacherDto> findByIdInstitute(String idInstitute);
 }

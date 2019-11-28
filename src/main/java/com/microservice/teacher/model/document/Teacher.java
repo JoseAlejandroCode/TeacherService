@@ -30,17 +30,28 @@ public class Teacher {
 
   private List<String> coursesList;
 
+  private String idInstitute;
+
+  public String getIdInstitute() {
+    return idInstitute;
+  }
+
+  public void setIdInstitute(String idInstitute) {
+    this.idInstitute = idInstitute;
+  }
+
   public Teacher() {
     coursesList = new ArrayList<>();
     familyList = new ArrayList<>();
   }
 
-  public Teacher(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate) {
+  public Teacher(String fullName, String typeDocument, String numberDocument, Boolean gender, Date birthdate, String idInstitute) {
     this.fullName = fullName;
     this.typeDocument = typeDocument;
     this.numberDocument = numberDocument;
     this.gender = gender;
     this.birthdate = birthdate;
+    this.idInstitute = idInstitute;
   }
 
   public String getId() {

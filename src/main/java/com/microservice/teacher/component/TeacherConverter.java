@@ -26,6 +26,7 @@ public class TeacherConverter {
     teacher.setNumberDocument(teacherDTO.getNumberDocument());
     teacher.setGender(teacherDTO.getGender());
     teacher.setBirthdate(teacherDTO.getBirthdate());
+    teacher.setIdInstitute(teacherDTO.getInstitute().getId());
     teacherDTO.getFamilyList().forEach(f -> teacher.addFamily(f.getId()));
     teacherDTO.getCourseList().forEach(c -> teacher.addCourse(c.getId()));
     return teacher;

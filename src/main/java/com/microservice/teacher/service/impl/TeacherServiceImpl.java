@@ -116,4 +116,10 @@ public class TeacherServiceImpl implements TeacherService {
               return Mono.just(teacherDto);
             });
   }
+
+  @Override
+  public Flux<TeacherDto> findByIdInstitute(String idInstitute) {
+    return teacherRepository.findByIdInstitute(idInstitute)
+            .flatMap(teacher -> Mono.just(teacherConverter.convertToDto(teacher)));
+  }
 }

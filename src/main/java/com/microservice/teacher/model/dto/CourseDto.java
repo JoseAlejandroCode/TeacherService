@@ -24,9 +24,19 @@ public class CourseDto {
   @NotNull
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date endCourse;
-  private List<PersonDto> studentList;
-  private PersonDto teacher;
+  private List<StudentDto> studentList;
+  private TeacherDto teacher;
   private List<FamilyDto> familyList;
+
+  private InstituteDto institute;
+
+  public InstituteDto getInstitute() {
+    return institute;
+  }
+
+  public void setInstitute(InstituteDto institute) {
+    this.institute = institute;
+  }
 
   public CourseDto() {
     this.studentList = new ArrayList<>();
@@ -89,23 +99,23 @@ public class CourseDto {
     this.endCourse = endCourse;
   }
 
-  public List<PersonDto> getStudentList() {
+  public List<StudentDto> getStudentList() {
     return studentList;
   }
 
-  public void setStudentList(List<PersonDto> studentList) {
+  public void setStudentList(List<StudentDto> studentList) {
     this.studentList = studentList;
   }
 
-  public void addStudent(PersonDto student) {
+  public void addStudent(StudentDto student) {
     this.studentList.add(student);
   }
 
-  public PersonDto getTeacher() {
+  public TeacherDto getTeacher() {
     return teacher;
   }
 
-  public void setTeacher(PersonDto teacher) {
+  public void setTeacher(TeacherDto teacher) {
     this.teacher = teacher;
   }
 

@@ -88,4 +88,11 @@ public class TeacherController {
             .body(teacherService.findByBirthdate(new SimpleDateFormat("yyyy-MM-dd").parse(dateStart),
                     new SimpleDateFormat("yyyy-MM-dd").parse(dateEnd))));
   }
+
+  @GetMapping("/institute/{idInstitute}")
+  public Mono<ResponseEntity<Flux<TeacherDto>>> findByIdInstitute(@PathVariable String idInstitute)  {
+    return Mono.just(ResponseEntity
+            .ok().contentType(MediaType.APPLICATION_JSON)
+            .body(teacherService.findByIdInstitute(idInstitute)));
+  }
 }

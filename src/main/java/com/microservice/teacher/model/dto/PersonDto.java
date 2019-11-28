@@ -32,6 +32,15 @@ abstract class PersonDto implements Serializable {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date birthdate;
 
+  private InstituteDto institute;
+
+  public InstituteDto getInstitute() {
+    return institute;
+  }
+
+  public void setInstitute(InstituteDto institute) {
+    this.institute = institute;
+  }
   public String getId() {
     return id;
   }
